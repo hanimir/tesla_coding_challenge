@@ -72,10 +72,10 @@ def get_max_radius_with_at_most_n_cars_covered_per_supercharger(n):
 
 
 num_cars_within_5_meters = get_num_cars_within_radius_of_any_supercharger(5)
-print('\nCars within 5 meters: {}'.format(num_cars_within_5_meters))
+print('\nCars within 5 meters of at least one supercharger: {}'.format(num_cars_within_5_meters))
 
 num_cars_within_10_meters = get_num_cars_within_radius_of_any_supercharger(10)
-print('\nCars within 10 meters: {}'.format(num_cars_within_10_meters))
+print('\nCars within 10 meters of at least one supercharger: {}'.format(num_cars_within_10_meters))
 
 min_radius_with_80_percent_coverage = get_min_radius_with_n_percent_coverage(0.8)
 print('\nMinimum radius with 80%% coverage: {}m'.format(min_radius_with_80_percent_coverage))
