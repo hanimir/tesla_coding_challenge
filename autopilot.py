@@ -71,42 +71,14 @@ def get_max_radius_with_at_most_n_cars_covered_per_supercharger(n):
   return radius
 
 
-def get_max_radius_with_at_most_n_cars_covered(n):
-  min_radius = 0
-  max_radius = 1
-  covered_cars = get_num_cars_within_radius_of_any_supercharger(max_radius)
+num_cars_within_5_meters = get_num_cars_within_radius_of_any_supercharger(5)
+print('\nCars within 5 meters: {}'.format(num_cars_within_5_meters))
 
-  import pdb; pdb.set_trace()
+num_cars_within_10_meters = get_num_cars_within_radius_of_any_supercharger(10)
+print('\nCars within 10 meters: {}'.format(num_cars_within_10_meters))
 
-  # Find upper and lower bounds on the radius.
-  while covered_cars > n:
-    min_radius = max_radius
-    max_radius *= 2
-    covered_cars = get_cars_within_radius_of_supercharger(max_radius, count_only=True)
+min_radius_with_80_percent_coverage = get_min_radius_with_n_percent_coverage(0.8)
+print('\nMinimum radius with 80%% coverage: {}m'.format(min_radius_with_80_percent_coverage))
 
-  # Binary search for the maximum radius satisfying the given conditions.
-  while min_radius < max_radius:
-    radius = (max_radius + min_radius) // 2
-    covered_cars = get_cars_within_radius_of_supercharger(radius, count_only=True)
-    if all_at_most_n(covered_cars):
-      min_radius = radius + 1
-    else:
-      max_radius = radius
-
-  return radius
-
-
-# num_cars_within_5_meters = get_num_cars_within_radius_of_any_supercharger(5)
-# print('\nCars within 5 meters: {}'.format(num_cars_within_5_meters))
-
-# num_cars_within_10_meters = get_num_cars_within_radius_of_any_supercharger(10)
-# print('\nCars within 10 meters: {}'.format(num_cars_within_10_meters))
-
-# min_radius_with_80_percent_coverage = get_min_radius_with_n_percent_coverage(0.8)
-# print('\nMinimum radius with 80%% coverage: {}m'.format(min_radius_with_80_percent_coverage))
-
-# max_radius_with_at_most_1000_cars_covered_per_supercharger = get_max_radius_with_at_most_n_cars_covered_per_supercharger(1000)
-# print('\nMaximum radius with at most 1000 cars covered by each supercharger: {}m'.format(max_radius_with_at_most_1000_cars_covered_per_supercharger))
-
-max_radius_with_at_most_1000_cars_covered = get_max_radius_with_at_most_n_cars_covered(1000)
-print('\nMaximum radius with at most 1000 cars covered: {}m'.format(max_radius_with_at_most_1000_cars_covered))
+max_radius_with_at_most_1000_cars_covered_per_supercharger = get_max_radius_with_at_most_n_cars_covered_per_supercharger(1000)
+print('\nMaximum radius with at most 1000 cars covered by each supercharger: {}m'.format(max_radius_with_at_most_1000_cars_covered_per_supercharger))
